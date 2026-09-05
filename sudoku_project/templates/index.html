@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudoku Challenge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <div>
+                <h1>Sudoku Challenge</h1>
+                <p class="subtitle">Play with difficulty, hints, dark mode, and a top 10 leaderboard.</p>
+            </div>
+            <button id="dark-mode-toggle" aria-pressed="false">Dark Mode</button>
+        </header>
+
+        <section class="controls-panel">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty" name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+
+            <button id="new-game" class="primary">New Game</button>
+            <button id="check-puzzle">Check</button>
+            <button id="hint-button">Hint</button>
+            <div class="timer">Time: <strong id="timer-display">00:00</strong></div>
+        </section>
+
+        <main class="game-grid-section">
+            <div id="message" role="status" aria-live="polite"></div>
+            <div id="sudoku-grid" class="sudoku-grid" aria-label="Sudoku board"></div>
+        </main>
+
+        <section class="scoreboard-panel">
+            <div class="scoreboard-header">
+                <h2>Top 10 Fastest Times</h2>
+                <p>Saved in your browser for the next game.</p>
+            </div>
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Difficulty</th>
+                        <th>Hints</th>
+                    </tr>
+                </thead>
+                <tbody id="score-body"></tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+
+</html>
